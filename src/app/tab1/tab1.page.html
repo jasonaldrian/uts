@@ -1,17 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Notes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+<ion-content padding>
+  <ion-input placeholder="Judul" [(ngModel)]="Judul"></ion-input>
+  <ion-input placeholder="Note" [(ngModel)]="Note"></ion-input>
+  <ion-input placeholder="Tanggal"[(ngModel)]="Tanggal"></ion-input>
+  <ion-button (click)="addNote()">Add Note</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let data of isiData | async">
+      <ion-label>
+        <h1 style="padding-left: 20px;">{{data.judul}}</h1>
+        <ion-button (click)="delete()">Delete</ion-button>
+        <ion-button (click)="edit()">Edit</ion-button>  
+        <p style="padding: 10px;text-align: left;">{{data.tanggal}}</p>
+        <a>{{data.note}}</a>
+      </ion-label>
+      
+  
+      
+    </ion-item>
+  </ion-list>
 </ion-content>
